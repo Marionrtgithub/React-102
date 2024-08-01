@@ -1,0 +1,250 @@
+/*import Button from "./Button";
+function App(){
+  return(<Button/>);
+}
+export default App;*/
+/*import Profilepicture from "./Profilepicture";
+function App(){
+  return(<Profilepicture/>);
+}
+export default App;*/
+
+/*import MyComponet from "./MyComponent";
+function App(){
+  return(<MyComponet/>);
+}
+export default App;*/
+/*import Counter from "./Counter";
+function App(){
+  return(<Counter/>);
+}
+export default App;*/
+/*import Onchange from "./Onchange";
+function App(){
+  return(<Onchange/>);
+}
+export default App;*/
+import ColorPicker from "./ColorPicker";
+function App(){
+  return(<ColorPicker/>);
+}
+export default App;
+function Button(){
+    //passing an anguments ny passing the condition
+   /* let count = 0;
+    const handleclick = (name) =>{
+        if(count<3){
+            count ++;
+            console.log(`${name} click me${count} times/s`)
+        }
+        else{
+            console.log(`${name} stop clicking me`)
+        }
+    };
+    return(<button onClick={() =>handleclick} >Click Me</button>); */
+
+    const hanleclick = (e) => e.target.textcontent="OOUCH!";
+    return(<button onClick={(e)=> hanleclick(e)}>Click Me</button>)
+}
+export default Button;
+import React, {useState} from "react";
+function ColorPicker(){
+    const [Color, setColor] = useState("#ffff");
+    function handleColorChange(event){
+        setColor(event.target.value)
+    }
+    return(<div className="color-picker-container">
+        <h1>Color Picker</h1>
+    
+    <div className="Color-display" style={{backgroupColor: Color}}>
+        <p>selectedColor: {Color}</p>
+    </div>
+    <label>select a color</label>
+    <input type="Color" value={Color} onChange={handleColorChange}/>
+    </div>);
+}
+export default ColorPicker;
+import React,{useState} from "react";
+function Counter(){
+    const[Count, setCount] = useState(0);
+
+    const Increment = () =>{
+        setCount(Count + 1);
+    }
+    const Decrement = () =>{
+        setCount(Count - 1);
+    }
+    const Reset = () =>{
+        setCount(0)
+    }
+
+    return(<div className="Count-container">
+        <h1 className="Count-people"> People's<br/> Counter</h1>
+        <h2 className="Count-display">{Count}</h2>  
+            <button className="Count-button" onClick={Increment}>Increment</button>
+            <button className="Count-button" onClick={Reset}>Reset</button>
+            <button className="Count-button" onClick={Decrement}>Decrement</button>
+    </div>)
+
+}
+export default Counter; 
+import react,{useState} from 'react';
+function MyComponent(){
+    const[name, setName] = useState("Guest");
+    const[age, setAge] = useState(0);
+    const[isEmployed, setisEmployed] = useState(false);
+    const updateName =() =>{
+        setName("kiprotich")
+    }
+    const incrementAge = () =>{
+        setAge(age + 1);
+    }
+
+    const Marionzeee = () =>{
+        setisEmployed(!isEmployed);
+    } 
+    return (
+        <div>
+            <p>name: {name}</p>
+            <button onClick={updateName}>SetName</button>
+            <p>age: {age}</p>
+            <button onClick={incrementAge}>increment Age</button>
+            <p>isemployed: {setisEmployed ? "Yes" : "No"}</p>
+            <button onClick={Marionzeee}>Onzee</button>
+        </div>
+    );
+
+}
+export default MyComponent;
+import React,{useState} from "react";
+function Onchange(){
+    const [name, SetName] = useState("");
+    const[quantity, setQuantity] = useState(1);
+    const [comment, setComment] = useState("");
+    const[payment, setPayment] = useState("");
+    const[Shipping, setShipping] =useState("");
+    function handleNameChange(event) { 
+        SetName(event.target.value);
+    }
+    function handleQuantityChange(event){
+        setQuantity(event.target.value);
+    }
+    function handleCommentChange(event){
+        setComment(event.target.value);
+    }
+    function handlePaymentChange(event){
+        setPayment(event.target.value);
+    }
+    function handleShippingChange(event){
+        setShipping(event.target.value);
+    }
+    return(<div>
+        <input value={name} onChange={handleNameChange} />
+        <p>name: {name}</p>
+        <input value={quantity} onChange={handleQuantityChange} type="number" />
+        <p>quantity: {quantity}</p>
+        <textarea value={comment} onChange={handleCommentChange} placeholder="Enter the delivery orders"/>
+        <p>comment: {comment}</p>
+        <select value={payment} onChange={handlePaymentChange}>
+            <option value ="">Select an options</option>
+            <option value ="Visa">Visa</option>
+            <option value ="PayPal">PayPal</option>
+            <option value ="Mastercard">MasterCard</option>
+            <option value ="GiftCard">GiftCard</option>
+        </select>
+        <p>payment: {payment}</p>
+        <label>
+        <input  type="radio" value ="Pick up " 
+                 checked={Shipping==="Pick up"} OnChange ={handleShippingChange}/>
+
+             Pick up 
+        </label><br/>
+        <label>
+        <input  type="radio" value ="Delivery"
+                checked ={Shipping==="Delivery"} OnChange ={handleShippingChange}/>
+            Delivery                 
+        </label>
+        <p>Shipping: {Shipping}</p>
+    </div>)
+}
+export default Onchange;
+
+function Profilepicture(){
+    const imgurl = './src/assets/profile.jpg';
+    const handleclick = (e) =>e.target.style.display = 'none';
+    return(<img onClick={(e)=>handleclick(e)} width=" 20%" height="20%" src={imgurl}></img>)
+}
+export default Profilepicture;
+
+body{
+  background-color: rgba(165, 133, 196, 0.438);
+  font-family: sans-serif Arial, Helvetica, sans-serif;
+}
+
+.Count-container{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.Count-people{
+  font-size: 6rem;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+.Count-display{
+  margin-top: 0;
+  font-size: 5em;
+  margin-bottom: 50px;
+}
+.Count-button{
+  margin: 0px 10px;
+  background-color: rgb(51, 51, 139);
+  font-size: 50px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: grey;
+  
+}
+.Count-button:hover{
+  background-color: rgb(184, 184, 197);
+  transition: ease 0.2s;
+}
+.color-picker-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+h1{
+  margin: 50px;
+  font-size: 3rem;
+}
+.Color-display{
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid hsl(0, 0%, 75%);
+  border-radius: 25px;
+  transition: 0.2 ease;
+  margin-bottom: 25px ;
+ 
+}
+.Color-display p{
+  color: grey;
+  font-size: 3rem;
+  text-align: center;
+}
+label{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+input[type="Color"]{
+  width: 75px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid hsl(0, 0%, 80%);
+}
